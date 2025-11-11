@@ -20,6 +20,7 @@ function Forms(props) {
             <EducationForms
                 educationHistory = {props.educationHistory}
                 setEducationHistory = {props.setEducationHistory}
+                handleEducationHistoryChange = {props.handleEducationHistoryChange}
             />
 
         </div>

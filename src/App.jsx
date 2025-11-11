@@ -22,6 +22,12 @@ function App() {
     })
   }
 
+  function handleEducationHistoryChange(field, value, idGenerated) {
+    setEducationHistory(educationHistory => {
+      return educationHistory.map(school => school.id == idGenerated ? {...school, [field] : value} : school);
+    })
+  }
+
 
   return (
     <div id='mainContainer'>
@@ -33,6 +39,7 @@ function App() {
         handleEmploymentHistoryChange = {handleEmploymentHistoryChange}
         educationHistory = {educationHistory}
         setEducationHistory = {setEducationHistory}
+        handleEducationHistoryChange = {handleEducationHistoryChange}
       />
 
       <ResumePreview
