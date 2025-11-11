@@ -1,11 +1,7 @@
 import { useState } from "react";
 
-function EducationForm({id, educationHistory, setEducationHistory, handleEducationHistoryChange}) {
+function EducationForm({id, handleEducationHistoryChange}) {
     const [currEducation, setCurrEducation] = useState({id, institute: "", degree: "", startDate:"", endDate:""});
-
-    function addToEducationHistory() {
-        setEducationHistory(prev => [...prev, currEducation]);
-    }
 
     function handleEducationChange(event) {
         const field = event.target.id;
@@ -18,12 +14,7 @@ function EducationForm({id, educationHistory, setEducationHistory, handleEducati
         <form className="educationForm">
             <div className="inputField">
                 <label htmlFor="institute">Institute Name</label>
-                {/* <input type="text" name="institute" id="institute" 
-                // extra round brackets when we return an object
-                    onChange={e => {setCurrEducation(prev => ({...prev, "institute": e.target.value}))}}
-                /> */}
                 <input type="text" name="institute" id="institute" 
-                // extra round brackets when we return an object
                     onChange={handleEducationChange}
                 />
             </div>
@@ -35,29 +26,21 @@ function EducationForm({id, educationHistory, setEducationHistory, handleEducati
                 />
             </div>
 
-            <div className="inputField">
-                <label htmlFor="educationStartDate">Start Date</label>
-                <input type="date" name="educationStartDate" id="startDate" 
-                    onChange={handleEducationChange}
-                />
+            <div className="dateInputs">
+                <div className="inputField">
+                    <label htmlFor="educationStartDate">Start Date</label>
+                    <input type="date" name="educationStartDate" id="startDate" 
+                        onChange={handleEducationChange}
+                    />
+                </div>
+
+                <div className="inputField">
+                    <label htmlFor="educationEndDate">End Date</label>
+                    <input type="date" name="educationEndDate" id="endDate" 
+                        onChange={handleEducationChange}
+                    />
+                </div>
             </div>
-
-            <div className="inputField">
-                <label htmlFor="educationEndDate">End Date</label>
-                <input type="date" name="educationEndDate" id="endDate" 
-                    onChange={handleEducationChange}
-                />
-            </div>
-
-            <button className="submitButton"
-                onClick={e => {
-                    e.preventDefault();
-                    addToEducationHistory();
-                }}
-            >
-                Submit
-            </button>
-
         </form>
     )
 }
@@ -72,8 +55,6 @@ function EducationForms(props) {
         setEducationForms(prev => [...prev, <EducationForm 
                 key={props.educationHistory.length} 
                 id = {idGenerated}
-                educationHistory={props.educationHistory} 
-                setEducationHistory={props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
             />
         ])

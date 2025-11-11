@@ -2,23 +2,16 @@ import { useState } from "react";
 
 
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({id, employmentHistory, setEmploymentHistory, handleEmploymentHistoryChange}) {
+function EmploymentForm({id, handleEmploymentHistoryChange}) {
     // Used to store all values of this current employment form's info. 
     const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: id, startDate: "", endDate: "", description: ""});
-
-    function addToEmploymentHistory() {
-        setEmploymentHistory(prev => [...prev, currCompany]);
-    }
 
     function handleEmploymentChange(event) {
         const field = event.target.id;
         const value = event.target.value;
-        // console.log(currCompany);
         setCurrCompany(prev => ({...prev, field: value}));
         handleEmploymentHistoryChange(field, value, id);
     }
-
-    
 
     return (
         <form className="employmentForm">
@@ -44,35 +37,24 @@ function EmploymentForm({id, employmentHistory, setEmploymentHistory, handleEmpl
                 />
             </div>
 
-            <div className="inputField">
-                <label htmlFor="companyStartDate">Start Date</label>
-                <input type="date" name="companyStartDate" id="startDate"
-                    onChange={handleEmploymentChange}
-                />
+            <div className="dateInputs">
+                <div className="inputField">
+                    <label htmlFor="companyStartDate">Start Date</label>
+                    <input type="date" name="companyStartDate" id="startDate"
+                        onChange={handleEmploymentChange}
+                    />
+                </div>
+                
+                <div className="inputField">
+                    <label htmlFor="companyEndDate">End Date</label>
+                    <input type="date" name="companyEndDate" id="endDate"
+                        onChange={handleEmploymentChange}
+                    />
+                </div>
             </div>
-            
-            <div className="inputField">
-                <label htmlFor="companyEndDate">End Date</label>
-                <input type="date" name="companyEndDate" id="endDate"
-                    onChange={handleEmploymentChange}
-                />
-            </div>
-
-            <div className="buttons">
-                <button className="submitButton"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        addToEmploymentHistory();
-                    }}
-                >
-                    Submit
-                </button>
-            </div>
-
         </form>
     )
 }
-
 
 function EmploymentForms(props) {
 
@@ -89,8 +71,6 @@ function EmploymentForms(props) {
         setEmploymentForms(prev => [...prev, <EmploymentForm 
                                             key={idGenerated} 
                                             id = {idGenerated}
-                                            employmentHistory = {props.employmentHistory}
-                                            setEmploymentHistory = {props.setEmploymentHistory}
                                             handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
                                             />
                                 ]
@@ -99,7 +79,6 @@ function EmploymentForms(props) {
 
     return (
         <section id = "employmentHistory">
-            
             <div className="employmentHistoryForms form">
                 <h2>Employment History</h2>
                 {employmentForms}
@@ -108,7 +87,6 @@ function EmploymentForms(props) {
             <div className="buttons">
                 <button onClick={(e) => handleAddNewEmploymentForm()} className="addNewButton">Add New</button>
             </div>
-            
         </section>
     )
 }

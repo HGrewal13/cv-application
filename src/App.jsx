@@ -12,9 +12,9 @@ function App() {
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     console.log(field, value, idGenerated);
 
-    setEmploymentHistory(prevHistory => {
-      return prevHistory.map(job => {
-        // console.log(job);
+    setEmploymentHistory(existingHistory => {
+      return existingHistory.map(job => {
+        // requires return statement to make sure employmentHistory is not blank when rendering in resumePreview
         return job.id == idGenerated
           ? {...job, [field]:value}
           : job //keep the original object
@@ -23,8 +23,8 @@ function App() {
   }
 
   function handleEducationHistoryChange(field, value, idGenerated) {
-    setEducationHistory(educationHistory => {
-      return educationHistory.map(school => school.id == idGenerated ? {...school, [field] : value} : school);
+    setEducationHistory(existingHistory => {
+      return existingHistory.map(school => school.id == idGenerated ? {...school, [field] : value} : school);
     })
   }
 
