@@ -34,10 +34,8 @@ function App() {
       <Forms
         personalDetails = {personalDetails}
         setPersonalDetails = {setPersonalDetails}
-        employmentHistory = {employmentHistory}
         setEmploymentHistory = {setEmploymentHistory}
         handleEmploymentHistoryChange = {handleEmploymentHistoryChange}
-        educationHistory = {educationHistory}
         setEducationHistory = {setEducationHistory}
         handleEducationHistoryChange = {handleEducationHistoryChange}
       />

@@ -53,7 +53,7 @@ function EducationForms(props) {
         const educationFormSekeleton = {id: idGenerated, institute: "", degree: "", startDate:"", endDate:""}
         props.setEducationHistory(prev => [...prev, educationFormSekeleton]);
         setEducationForms(prev => [...prev, <EducationForm 
-                key={props.educationHistory.length} 
+                key={idGenerated} 
                 id = {idGenerated}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
             />

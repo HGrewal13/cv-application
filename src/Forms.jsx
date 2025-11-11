@@ -12,13 +12,11 @@ function Forms(props) {
             />
 
             <EmploymentForms 
-                employmentHistory = {props.employmentHistory}
                 setEmploymentHistory = {props.setEmploymentHistory}
                 handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
             />
 
             <EducationForms
-                educationHistory = {props.educationHistory}
                 setEducationHistory = {props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
             />
