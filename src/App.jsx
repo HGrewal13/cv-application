@@ -7,7 +7,7 @@ import ResumePreview from './ResumePreview'
 function App() {
   const [personalDetails, setPersonalDetails] = useState({name: "John Smith", phone: 1234567890, email: "j.smith13@hotmail.com", address: "123 Ave"});
   const [employmentHistory, setEmploymentHistory] = useState([{name: "Google", role: "Engineer", description: "I did engineering things", startDate: "2025-01-01", endDate: "2025-12-31"}]);
-  const [educationHistory, setEducationHistory] = useState([]);
+  const [educationHistory, setEducationHistory] = useState([{institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
 
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     console.log(field, value, idGenerated);

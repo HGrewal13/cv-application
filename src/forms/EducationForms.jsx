@@ -10,29 +10,29 @@ function EducationForm({school, handleEducationHistoryChange, handleOpenEducatio
             <form className="educationForm">
                 <div className="inputField">
                     <label htmlFor="institute">Institute Name</label>
-                    <input type="text" name="institute" id="institute" 
+                    <input type="text" name="institute" id="institute" value={school.institute}
                         onChange={handleEducationChange}
                     />
                 </div>
 
                 <div className="inputField">
                     <label htmlFor="degree">Degree</label>
-                    <input type="text" name="degree" id="degree" 
+                    <input type="text" name="degree" id="degree" value={school.degree}
                         onChange={handleEducationChange}
                     />
                 </div>
 
                 <div className="dateInputs">
                     <div className="inputField">
-                        <label htmlFor="educationStartDate">Start Date</label>
-                        <input type="date" name="educationStartDate" id="startDate" 
+                        <label htmlFor="startDate">Start Date</label>
+                        <input type="date" name="educationStartDate" id="startDate" value={school.startDate}
                             onChange={handleEducationChange}
                         />
                     </div>
 
                     <div className="inputField">
-                        <label htmlFor="educationEndDate">End Date</label>
-                        <input type="date" name="educationEndDate" id="endDate" 
+                        <label htmlFor="endDate">End Date</label>
+                        <input type="date" name="educationEndDate" id="endDate" value={school.endDate}
                             onChange={handleEducationChange}
                         />
                     </div>
