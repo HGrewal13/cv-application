@@ -2,23 +2,31 @@ import { useState } from "react";
 
 
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({employmentHistory, setEmploymentHistory}) {
+function EmploymentForm({idGenerated, employmentHistory, setEmploymentHistory, handleEmploymentHistoryChange}) {
     // Used to store all values of this current employment form's info. 
-    const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: "", startDate: "", endDate: "", description: ""});
+    const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: idGenerated, startDate: "", endDate: "", description: ""});
 
     function addToEmploymentHistory() {
         setEmploymentHistory(prev => [...prev, currCompany]);
     }
+
+    function handleEmploymentChange(event) {
+        const field = event.target.id;
+        const value = event.target.value;
+        console.log(currCompany);
+        setCurrCompany(prev => ({...prev, field: value}));
+        handleEmploymentHistoryChange(field, value, idGenerated);
+    }
+
+    
 
     return (
         <form className="employmentForm">
             <div className="inputField">
                 <label htmlFor="companyName">Company Name</label>
                 {/* the ( bracket before {...prev is so react doesnt mistake our object literal for a function */}
-                <input type="text" name="companyName" id="companyName"
-                    onChange={(e) => {setCurrCompany(prev => ({...prev,
-                                        "name": e.target.value
-                                    }))}}
+                <input type="text" name="companyName" id="name"
+                    onChange={handleEmploymentChange}
                 />
             </div>
 
@@ -82,10 +90,16 @@ function EmploymentForms(props) {
     const [employmentForms, setEmploymentForms] = useState([]);
     
     const handleAddNewEmploymentForm = function() {
+        const idGenerated = Date.now().toString();
+        const employmentDetails = { name: "", role: "", id: idGenerated, startDate: "", endDate: "", description: ""};
+        // needs to be added in so employmentHistory isn't initially empty. Without this a .map error will occur
+        props.setEmploymentHistory(prev => [...prev, employmentDetails]);
         setEmploymentForms(prev => [...prev, <EmploymentForm 
-                                            key={props.employmentHistory.length} 
+                                            key={idGenerated} 
+                                            id = {idGenerated}
                                             employmentHistory = {props.employmentHistory}
                                             setEmploymentHistory = {props.setEmploymentHistory}
+                                            handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
                                             />
                                 ]
                         )
