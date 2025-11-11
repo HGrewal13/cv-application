@@ -2,9 +2,9 @@ import { useState } from "react";
 
 
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({idGenerated, employmentHistory, setEmploymentHistory, handleEmploymentHistoryChange}) {
+function EmploymentForm({id, employmentHistory, setEmploymentHistory, handleEmploymentHistoryChange}) {
     // Used to store all values of this current employment form's info. 
-    const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: idGenerated, startDate: "", endDate: "", description: ""});
+    const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: id, startDate: "", endDate: "", description: ""});
 
     function addToEmploymentHistory() {
         setEmploymentHistory(prev => [...prev, currCompany]);
@@ -13,9 +13,9 @@ function EmploymentForm({idGenerated, employmentHistory, setEmploymentHistory, h
     function handleEmploymentChange(event) {
         const field = event.target.id;
         const value = event.target.value;
-        console.log(currCompany);
+        // console.log(currCompany);
         setCurrCompany(prev => ({...prev, field: value}));
-        handleEmploymentHistoryChange(field, value, idGenerated);
+        handleEmploymentHistoryChange(field, value, id);
     }
 
     
@@ -32,37 +32,29 @@ function EmploymentForm({idGenerated, employmentHistory, setEmploymentHistory, h
 
             <div className="inputField">
                 <label htmlFor="companyRole">Role</label>
-                <input type="text" name="companyRole" id="companyRole"
-                    onChange={(e) => {setCurrCompany(prev => ({...prev,
-                                        "role": e.target.value
-                                    }))}}
+                <input type="text" name="companyRole" id="role"
+                    onChange={handleEmploymentChange}
                 />
             </div>
 
             <div className="inputField">
                 <label htmlFor="description">Description</label>
                 <input type="text" name="description" id="description"
-                    onChange={(e) => {setCurrCompany(prev => ({...prev,
-                                        "description": e.target.value
-                                    }))}}
+                    onChange={handleEmploymentChange}
                 />
             </div>
 
             <div className="inputField">
                 <label htmlFor="companyStartDate">Start Date</label>
-                <input type="date" name="companyStartDate" id="companyStartDate"
-                    onChange={(e) => {setCurrCompany(prev => ({...prev,
-                                        "startDate": e.target.value
-                                    }))}}
+                <input type="date" name="companyStartDate" id="startDate"
+                    onChange={handleEmploymentChange}
                 />
             </div>
             
             <div className="inputField">
                 <label htmlFor="companyEndDate">End Date</label>
-                <input type="date" name="companyEndDate" id="companyEndDate"
-                    onChange={(e) => {setCurrCompany(prev => ({...prev,
-                                        "endDate": e.target.value
-                                    }))}}
+                <input type="date" name="companyEndDate" id="endDate"
+                    onChange={handleEmploymentChange}
                 />
             </div>
 

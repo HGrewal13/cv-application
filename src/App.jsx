@@ -13,8 +13,8 @@ function App() {
     console.log(field, value, idGenerated);
 
     setEmploymentHistory(prevHistory => {
-      prevHistory.map(job => {
-        console.log(job);
+      return prevHistory.map(job => {
+        // console.log(job);
         return job.id == idGenerated
           ? {...job, [field]:value}
           : job //keep the original object
