@@ -1,4 +1,14 @@
 
+function handleDateChange(date) {
+    const formatted = new Date(date).toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+        timeZone: "UTC",
+    });
+    return formatted;
+}
+
 function PersonalDetailsCard({personalDetails}) {
 
     return (
@@ -50,7 +60,13 @@ function EmploymentCard({employmentHistory}) {
                         <div className="employmentGrouping">
                             <h3>{obj.role}</h3>
                             <div className="dateRange">
-                                <p>{obj.startDate} - {obj.endDate}</p>
+                                {obj.startDate 
+                                    ? 
+                                    <p>{handleDateChange(obj.startDate)} - {handleDateChange(obj.endDate)}</p>
+                                    :
+                                    ""
+                                }
+                                
                             </div>
                         </div>
                         <p>{obj.description}</p>

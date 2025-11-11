@@ -48,9 +48,10 @@
 }
 
 .buttons {
-  display: grid;
-  /* grid-template-columns: min-content; */
+  display: flex;
+  /* grid-auto-flow: column; */
   justify-content: end;
+  gap: 10px;
 }
 
 .personalDetailsUpdateButton {
@@ -79,6 +80,12 @@
 .dateInputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.minimizedForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Education section */

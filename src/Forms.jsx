@@ -3,7 +3,6 @@ import EmploymentForms from "./forms/EmploymentForms";
 import EducationForms from "./forms/EducationForms";
 
 function Forms(props) {
-
     function handleDateChange(date) {
         const formatted = new Date(date).toLocaleDateString("en-US", {
             month: "short",
@@ -19,19 +18,18 @@ function Forms(props) {
                 personalDetails = {props.personalDetails}
                 setPersonalDetails = {props.setPersonalDetails}
             />
-
             <EmploymentForms 
+                employmentHistory = {props.employmentHistory}
                 setEmploymentHistory = {props.setEmploymentHistory}
                 handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
-                handleDateChange = {handleDateChange}
+                handleOpenEmploymentForm = {props.handleOpenEmploymentForm}
+                handleCollapseEmploymentForm = {props.handleCollapseEmploymentForm}
             />
-
             <EducationForms
                 setEducationHistory = {props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
                 handleDateChange = {handleDateChange}
             />
-
         </div>
     )
 }

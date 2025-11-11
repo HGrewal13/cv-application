@@ -2,94 +2,101 @@ import { useState } from "react";
 
 
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({id, handleEmploymentHistoryChange, handleDateChange}) {
-    // Used to store all values of this current employment form's info. 
-    const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: id, startDate: "", endDate: "", description: ""});
-
+function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymentForm, handleCollapseEmploymentForm}) {
     function handleEmploymentChange(event) {
         const field = event.target.id;
         let value = event.target.value;
-        if(field == "startDate" || field == "endDate") {
-            value = handleDateChange(value);
-        }
-        setCurrCompany(prev => ({...prev, [field]: value}));
-        handleEmploymentHistoryChange(field, value, id);
+        handleEmploymentHistoryChange(field, value, job.id);
     }
 
-    return (
-        <form className="employmentForm">
-            <div className="inputField">
-                <label htmlFor="companyName">Company Name</label>
-                {/* the ( bracket before {...prev is so react doesnt mistake our object literal for a function */}
-                <input type="text" name="companyName" id="name"
-                    onChange={handleEmploymentChange}
-                />
-            </div>
-
-            <div className="inputField">
-                <label htmlFor="companyRole">Role</label>
-                <input type="text" name="companyRole" id="role"
-                    onChange={handleEmploymentChange}
-                />
-            </div>
-
-            <div className="inputField">
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" id="description"
-                    onChange={handleEmploymentChange}
-                />
-            </div>
-
-            <div className="dateInputs">
+    if(job.visibility == "open") {
+        return (
+            <form className="employmentForm">
                 <div className="inputField">
-                    <label htmlFor="companyStartDate">Start Date</label>
-                    <input type="date" name="companyStartDate" id="startDate"
+                    <label htmlFor="companyName">Company Name</label>
+                    <input type="text" name="companyName" id="name" value={job.name}
                         onChange={handleEmploymentChange}
                     />
+                </div>
+
+                <div className="inputField">
+                    <label htmlFor="companyRole">Role</label>
+                    <input type="text" name="companyRole" id="role" value={job.role}
+                        onChange={handleEmploymentChange}
+                    />
+                </div>
+
+                <div className="inputField">
+                    <label htmlFor="description">Description</label>
+                    <input type="text" name="description" id="description" value={job.description}
+                        onChange={handleEmploymentChange}
+                    />
+                </div>
+
+                <div className="dateInputs">
+                    <div className="inputField">
+                        <label htmlFor="companyStartDate">Start Date</label>
+                        <input type="date" name="companyStartDate" id="startDate" value={job.startDate}
+                            onChange={handleEmploymentChange}
+                        />
+                    </div>
+                    
+                    <div className="inputField">
+                        <label htmlFor="companyEndDate">End Date</label>
+                        <input type="date" name="companyEndDate" id="endDate" value={job.endDate}
+                            onChange={handleEmploymentChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="buttons">
+                    <button>Delete</button>
+                    <button onClick={() => handleCollapseEmploymentForm(job.id)}>Collapse</button>
                 </div>
                 
-                <div className="inputField">
-                    <label htmlFor="companyEndDate">End Date</label>
-                    <input type="date" name="companyEndDate" id="endDate"
-                        onChange={handleEmploymentChange}
-                    />
+            </form>
+        )
+    } else {
+        return (
+            <div className="minimizedForm">
+                <h2>{job.name}</h2>
+                <div className="buttons">
+                    <button type="button" onClick={() => handleOpenEmploymentForm(job.id)}>Expand</button>
                 </div>
+                
             </div>
-        </form>
-    )
+        )
+    }
+    
 }
 
 function EmploymentForms(props) {
-
-    // Used to update EmploymentForms with all the forms created for each individual place of employment. To be rendered here
-    // Clicking the button just creates a new EmploymentForm component with empty values.
-        // Submitting the new EmploymentForm will actually update the employmentHistory
-    const [employmentForms, setEmploymentForms] = useState([]);
-    
     const handleAddNewEmploymentForm = function() {
         const idGenerated = Date.now().toString();
-        const employmentDetails = { name: "", role: "", id: idGenerated, startDate: "", endDate: "", description: ""};
+        const employmentDetails = { name: "", role: "", id: idGenerated, startDate: "", endDate: "", description: "", visibility: "open"};
         // needs to be added in so employmentHistory isn't initially empty. Without this a .map error will occur
         props.setEmploymentHistory(prev => [...prev, employmentDetails]);
-        setEmploymentForms(prev => [...prev, <EmploymentForm 
-                                            key={idGenerated} 
-                                            id = {idGenerated}
-                                            handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
-                                            handleDateChange = {props.handleDateChange}
-                                            />
-                                ]
-                        )
     }
 
     return (
         <section id = "employmentHistory">
             <div className="employmentHistoryForms form">
                 <h2>Employment History</h2>
-                {employmentForms}
+                {props.employmentHistory.map(job => (
+                    <EmploymentForm
+                        key={job.id} 
+                        job = {job}
+                        handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
+                        handleOpenEmploymentForm = {props.handleOpenEmploymentForm}
+                        handleCollapseEmploymentForm = {props.handleCollapseEmploymentForm}
+                    >
+                    </EmploymentForm>
+                ))}
             </div>
 
             <div className="buttons">
                 <button onClick={(e) => handleAddNewEmploymentForm()} className="addNewButton">Add New</button>
+                
             </div>
         </section>
     )
