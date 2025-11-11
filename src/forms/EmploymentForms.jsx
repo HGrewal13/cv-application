@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
 function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymentForm, handleCollapseEmploymentForm}) {
     function handleEmploymentChange(event) {
@@ -51,7 +48,7 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymen
 
                 <div className="buttons">
                     <button>Delete</button>
-                    <button onClick={() => handleCollapseEmploymentForm(job.id)}>Collapse</button>
+                    <button type="button" onClick={() => handleCollapseEmploymentForm(job.id)}>Collapse</button>
                 </div>
                 
             </form>

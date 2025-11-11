@@ -26,9 +26,12 @@ function Forms(props) {
                 handleCollapseEmploymentForm = {props.handleCollapseEmploymentForm}
             />
             <EducationForms
+                educationHistory = {props.educationHistory}
                 setEducationHistory = {props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
                 handleDateChange = {handleDateChange}
+                handleOpenEducationForm = {props.handleOpenEducationForm}
+                handleCollapseEducationForm = {props.handleCollapseEducationForm}
             />
         </div>
     )

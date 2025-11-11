@@ -34,7 +34,12 @@ function EducationCard({educationHistory}) {
                         <div className="educationGrouping">
                             <h3>{obj.degree}</h3>
                             <div className="dateRange">
-                                <p>{obj.startDate} - {obj.endDate}</p>
+                                {obj.startDate 
+                                    ? 
+                                    <p>{handleDateChange(obj.startDate)} - {handleDateChange(obj.endDate)}</p>
+                                    :
+                                    ""
+                                }
                             </div>
                         </div>
                     </div>

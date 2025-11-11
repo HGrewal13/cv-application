@@ -28,6 +28,7 @@ function App() {
     })
   }
 
+  // can probably reuse this code for education section
   function handleOpenEmploymentForm(formId) {
     setEmploymentHistory(existingHistory => {
       return existingHistory.map(job => {
@@ -44,6 +45,22 @@ function App() {
     );
   }
 
+    function handleOpenEducationForm(formId) {
+    setEducationHistory(existingHistory => {
+      return existingHistory.map(job => {
+        return job.id == formId
+          ? {...job, visibility: "open"}
+          : {...job, visibility: "closed"}
+      })
+    })
+  }
+
+  function handleCollapseEducationForm(formId) {
+    setEducationHistory(list =>
+      list.map(job => (job.id === formId ? { ...job, visibility: "closed" } : job))
+    );
+  }
+
   return (
     <div id='mainContainer'>
       <Forms
@@ -52,10 +69,13 @@ function App() {
         employmentHistory = {employmentHistory}
         setEmploymentHistory = {setEmploymentHistory}
         handleEmploymentHistoryChange = {handleEmploymentHistoryChange}
+        educationHistory = {educationHistory}
         setEducationHistory = {setEducationHistory}
         handleEducationHistoryChange = {handleEducationHistoryChange}
         handleOpenEmploymentForm = {handleOpenEmploymentForm}
         handleCollapseEmploymentForm = {handleCollapseEmploymentForm}
+        handleOpenEducationForm = {handleOpenEducationForm}
+        handleCollapseEducationForm = {handleCollapseEducationForm}
       />
 
       <ResumePreview

@@ -1,67 +1,67 @@
-import { useState } from "react";
-
-function EducationForm({id, handleEducationHistoryChange, handleDateChange}) {
-    const [currEducation, setCurrEducation] = useState({id, institute: "", degree: "", startDate:"", endDate:""});
-
+function EducationForm({school, handleEducationHistoryChange, handleOpenEducationForm, handleCollapseEducationForm}) {
     function handleEducationChange(event) {
         const field = event.target.id;
         let value = event.target.value;
-        if(field == "startDate" || field == "endDate") {
-            value = handleDateChange(value);
-        }
-        setCurrEducation(prev => ({...prev, [field] : value}));
-        handleEducationHistoryChange(field, value, id);
+        handleEducationHistoryChange(field, value, school.id);
     }
 
-    return (
-        <form className="educationForm">
-            <div className="inputField">
-                <label htmlFor="institute">Institute Name</label>
-                <input type="text" name="institute" id="institute" 
-                    onChange={handleEducationChange}
-                />
-            </div>
-
-            <div className="inputField">
-                <label htmlFor="degree">Degree</label>
-                <input type="text" name="degree" id="degree" 
-                    onChange={handleEducationChange}
-                />
-            </div>
-
-            <div className="dateInputs">
+    if(school.visibility == "open") {
+        return (
+            <form className="educationForm">
                 <div className="inputField">
-                    <label htmlFor="educationStartDate">Start Date</label>
-                    <input type="date" name="educationStartDate" id="startDate" 
+                    <label htmlFor="institute">Institute Name</label>
+                    <input type="text" name="institute" id="institute" 
                         onChange={handleEducationChange}
                     />
                 </div>
 
                 <div className="inputField">
-                    <label htmlFor="educationEndDate">End Date</label>
-                    <input type="date" name="educationEndDate" id="endDate" 
+                    <label htmlFor="degree">Degree</label>
+                    <input type="text" name="degree" id="degree" 
                         onChange={handleEducationChange}
                     />
                 </div>
+
+                <div className="dateInputs">
+                    <div className="inputField">
+                        <label htmlFor="educationStartDate">Start Date</label>
+                        <input type="date" name="educationStartDate" id="startDate" 
+                            onChange={handleEducationChange}
+                        />
+                    </div>
+
+                    <div className="inputField">
+                        <label htmlFor="educationEndDate">End Date</label>
+                        <input type="date" name="educationEndDate" id="endDate" 
+                            onChange={handleEducationChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="buttons">
+                    <button>Delete</button>
+                    <button type="button" onClick={() => handleCollapseEducationForm(school.id)}>Collapse</button>
+                </div>
+            </form>
+        )
+    } else {
+        return (
+            <div className="minimizedForm">
+                <h2>{school.institute}</h2>
+                <div className="buttons">
+                    <button type="button" onClick={() => handleOpenEducationForm(school.id)}>Expand</button>
+                </div>
+                
             </div>
-        </form>
-    )
+        )
+    }
 }
 
 function EducationForms(props) {
-    const [educationForms, setEducationForms] = useState([]);
-
     const handleAddNewEducationForm = function() {
         const idGenerated = Date.now().toString();
-        const educationFormSekeleton = {id: idGenerated, institute: "", degree: "", startDate:"", endDate:""}
+        const educationFormSekeleton = {id: idGenerated, institute: "", degree: "", startDate:"", endDate:"", visibility: "open"}
         props.setEducationHistory(prev => [...prev, educationFormSekeleton]);
-        setEducationForms(prev => [...prev, <EducationForm 
-                key={idGenerated} 
-                id = {idGenerated}
-                handleEducationHistoryChange = {props.handleEducationHistoryChange}
-                handleDateChange = {props.handleDateChange}
-            />
-        ])
     }
 
     return (
@@ -69,7 +69,16 @@ function EducationForms(props) {
             
             <div className="educationHistoryForms form">
                 <h2>Education History</h2>
-                {educationForms}
+                {props.educationHistory.map(school => (
+                    <EducationForm
+                        key = {school.id}
+                        school = {school}
+                        handleEducationHistoryChange={props.handleEducationHistoryChange}
+                        handleOpenEducationForm = {props.handleOpenEducationForm}
+                        handleCollapseEducationForm = {props.handleCollapseEducationForm}
+                    >
+                    </EducationForm>
+                ))}
             </div>
             <div className="buttons">
                 <button onClick={(e) => handleAddNewEducationForm()} className="addNewButton">Add New</button>
