@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-function EducationForm({id, handleEducationHistoryChange}) {
+function EducationForm({id, handleEducationHistoryChange, handleDateChange}) {
     const [currEducation, setCurrEducation] = useState({id, institute: "", degree: "", startDate:"", endDate:""});
 
     function handleEducationChange(event) {
         const field = event.target.id;
-        const value = event.target.value;
-        setCurrEducation(prev => ({...prev, field : value}));
+        let value = event.target.value;
+        if(field == "startDate" || field == "endDate") {
+            value = handleDateChange(value);
+        }
+        setCurrEducation(prev => ({...prev, [field] : value}));
         handleEducationHistoryChange(field, value, id);
     }
 
@@ -56,6 +59,7 @@ function EducationForms(props) {
                 key={idGenerated} 
                 id = {idGenerated}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
+                handleDateChange = {props.handleDateChange}
             />
         ])
     }

@@ -4,6 +4,15 @@ import EducationForms from "./forms/EducationForms";
 
 function Forms(props) {
 
+    function handleDateChange(date) {
+        const formatted = new Date(date).toLocaleDateString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric"
+        });
+        return formatted;
+    }
+
     return (
         <div id="mainForm">
             <PersonalDetailsForm 
@@ -14,11 +23,13 @@ function Forms(props) {
             <EmploymentForms 
                 setEmploymentHistory = {props.setEmploymentHistory}
                 handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
+                handleDateChange = {handleDateChange}
             />
 
             <EducationForms
                 setEducationHistory = {props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
+                handleDateChange = {handleDateChange}
             />
 
         </div>

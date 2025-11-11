@@ -2,14 +2,17 @@ import { useState } from "react";
 
 
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({id, handleEmploymentHistoryChange}) {
+function EmploymentForm({id, handleEmploymentHistoryChange, handleDateChange}) {
     // Used to store all values of this current employment form's info. 
     const [currCompany, setCurrCompany] = useState({ name: "", role: "", id: id, startDate: "", endDate: "", description: ""});
 
     function handleEmploymentChange(event) {
         const field = event.target.id;
-        const value = event.target.value;
-        setCurrCompany(prev => ({...prev, field: value}));
+        let value = event.target.value;
+        if(field == "startDate" || field == "endDate") {
+            value = handleDateChange(value);
+        }
+        setCurrCompany(prev => ({...prev, [field]: value}));
         handleEmploymentHistoryChange(field, value, id);
     }
 
@@ -72,6 +75,7 @@ function EmploymentForms(props) {
                                             key={idGenerated} 
                                             id = {idGenerated}
                                             handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
+                                            handleDateChange = {props.handleDateChange}
                                             />
                                 ]
                         )
