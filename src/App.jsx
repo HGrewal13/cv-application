@@ -13,6 +13,18 @@ function App() {
   const [resumeMargins, setResumeMargins] = useState({});
   const [resumeLineSpacing, setResumeLineSpacing] = useState({});
 
+    const convertToPhoneNumber = function(number) {
+        const digits = String(number).replace(/\D/g, "");
+
+        if(digits.length <= 3) {
+            return digits;
+        } else if(digits.length <= 6) {
+            return `(${digits.slice(0,3)})-${digits.slice(3)}`;
+        } else {
+            return `(${digits.slice(0, 3)})-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+        }
+    }
+
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     setEmploymentHistory(existingHistory => {
       return existingHistory.map(job => {
@@ -91,6 +103,7 @@ function App() {
       <Forms
         personalDetails = {personalDetails}
         setPersonalDetails = {setPersonalDetails}
+        convertToPhoneNumber = {convertToPhoneNumber}
         employmentHistory = {employmentHistory}
         setEmploymentHistory = {setEmploymentHistory}
         handleEmploymentHistoryChange = {handleEmploymentHistoryChange}
@@ -104,6 +117,7 @@ function App() {
 
       <ResumePreview
         personalDetails = {personalDetails}
+        convertToPhoneNumber = {convertToPhoneNumber}
         employmentHistory = {employmentHistory}
         educationHistory = {educationHistory}
         resumeMargins = {resumeMargins}

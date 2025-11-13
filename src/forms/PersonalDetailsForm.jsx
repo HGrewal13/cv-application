@@ -1,8 +1,4 @@
-function PersonalDetailsForm({personalDetails, setPersonalDetails}) {
-
-    const convertToPhoneNumber = function(number) {
-        
-    }
+function PersonalDetailsForm({personalDetails, setPersonalDetails, convertToPhoneNumber}) {
 
     return (
         <form id="personalDetailsForm" className="form">
@@ -24,7 +20,7 @@ function PersonalDetailsForm({personalDetails, setPersonalDetails}) {
 
             <div className="inputField">
                 <label htmlFor="phone">Phone</label>
-                <input type="tel" name="phone" id="phone" value={personalDetails.phone}
+                <input type="tel" name="phone" id="phone" value={convertToPhoneNumber(personalDetails.phone)}
                     onChange={(e) => {setPersonalDetails(prev => ({...prev, "phone": e.target.value}))}}
                 />
             </div>

@@ -12,14 +12,14 @@ function handleDateChange(date) {
     return formatted;
 }
 
-function PersonalDetailsCard({personalDetails}) {
+function PersonalDetailsCard({personalDetails, convertToPhoneNumber}) {
 
     return (
         <div className="personalDetails">
             <h2>{personalDetails.name}</h2>
             <div id="contactDetails">
                 <p>{personalDetails.email}</p>
-                <p>{personalDetails.phone}</p>
+                <p>{convertToPhoneNumber(personalDetails.phone)}</p>
                 <p>{personalDetails.address}</p>
             </div>
         </div>
@@ -90,6 +90,7 @@ function ResumePreview(props) {
         <div className="resumePreview" style={props.resumeMargins}>
             <PersonalDetailsCard
                 personalDetails={props.personalDetails}
+                convertToPhoneNumber = {props.convertToPhoneNumber}
             />
 
             <EmploymentCard

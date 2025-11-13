@@ -8,6 +8,7 @@ function Forms(props) {
             <PersonalDetailsForm 
                 personalDetails = {props.personalDetails}
                 setPersonalDetails = {props.setPersonalDetails}
+                convertToPhoneNumber = {props.convertToPhoneNumber}
             />
             <EmploymentForms 
                 employmentHistory = {props.employmentHistory}
