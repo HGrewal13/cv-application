@@ -1,7 +1,7 @@
 
 function Margins({margins, setResumeMargins, handleSliderValueChange}) {
     return (
-        <div id="customizationsMenu">
+        <div id="marginsCustomization">
             <label htmlFor="margins">Vertical Margins</label>
             <input type="range" name="margins" id="verticalMargins" min="0" max="20"
                 onChange={handleSliderValueChange}
@@ -15,28 +15,30 @@ function Margins({margins, setResumeMargins, handleSliderValueChange}) {
     )
 }
 
-
+function LineSpacing() {
+    
+    return (
+        <div id="lineSpacing">
+            <label htmlFor="lineSpacing">Line Spacing</label>
+            <input type="range" name="lineSpacing" id="lineSpacing" min="0" max="10" />
+        </div>
+    )
+}
 
 function Customizations(props) {
 
-    function handleSliderValueChange(event) {
-        const value = event.target.value;
-        const orientation = event.target.id;
-        console.log(value);
-        if(orientation == "verticalMargins") {
-            props.setResumeMargins(prev => ({...prev, "padding-top": value+"px", "padding-bottom": value+"px"}));
-        } else if(orientation == "horizontalMargins") {
-            props.setResumeMargins(prev => ({...prev, "padding-left": value+"px", "padding-right": value+"px"}));
-        }
-        // props.setResumeMargins(prev => ({...prev, padding: value+"px"}));
-    }
-
     return (
-        <Margins
-            margins = {props.resumeMargins}
-            setResumeMargins = {props.setResumeMargins}
-            handleSliderValueChange = {handleSliderValueChange}
-        />
+        <div id="customizationsMenu">
+            <Margins
+                margins = {props.resumeMargins}
+                setResumeMargins = {props.setResumeMargins}
+                handleSliderValueChange = {props.handleSliderValueChange}
+            />
+            <LineSpacing
+
+            />
+        </div>
+
     )
 
     

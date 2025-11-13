@@ -11,10 +11,9 @@ function App() {
   const [educationHistory, setEducationHistory] = useState([{institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
 
   const [resumeMargins, setResumeMargins] = useState({});
+  const [resumeLineSpacing, setResumeLineSpacing] = useState({});
 
   function handleEmploymentHistoryChange(field, value, idGenerated) {
-    console.log(field, value, idGenerated);
-
     setEmploymentHistory(existingHistory => {
       return existingHistory.map(job => {
         // requires return statement to make sure employmentHistory is not blank when rendering in resumePreview
@@ -31,44 +30,54 @@ function App() {
     })
   }
 
-  // can probably reuse this code for education section
-  function handleOpenEmploymentForm(formId) {
-    setEmploymentHistory(existingHistory => {
-      return existingHistory.map(job => {
-        return job.id == formId
-          ? {...job, visibility: "open"}
-          : {...job, visibility: "closed"}
+  function handleExpandForm(formType, formId) {
+    if(formType == "employment") {
+      setEmploymentHistory(existingHistory => {
+        return existingHistory.map(job => {
+          return job.id == formId
+            ? {...job, visibility: "open"}
+            : {...job, visibility: "closed"}
+        })
       })
-    })
-  }
-
-  function handleCollapseEmploymentForm(formId) {
-    setEmploymentHistory(list =>
-      list.map(job => (job.id === formId ? { ...job, visibility: "closed" } : job))
-    );
-  }
-
-    function handleOpenEducationForm(formId) {
-    setEducationHistory(existingHistory => {
-      return existingHistory.map(job => {
-        return job.id == formId
-          ? {...job, visibility: "open"}
-          : {...job, visibility: "closed"}
+    } else if(formType == "education") {
+      setEducationHistory(existingHistory => {
+        return existingHistory.map(job => {
+          return job.id == formId
+            ? {...job, visibility: "open"}
+            : {...job, visibility: "closed"}
+        })
       })
-    })
+    }
   }
 
-  function handleCollapseEducationForm(formId) {
-    setEducationHistory(list =>
-      list.map(job => (job.id === formId ? { ...job, visibility: "closed" } : job))
-    );
+  function handleCollapseForm(formType, formId) {
+    if(formType == "employment") {
+      setEmploymentHistory(list =>
+        list.map(job => (job.id === formId ? { ...job, visibility: "closed" } : job))
+      );
+    } else if(formType == "education") {
+      setEducationHistory(list =>
+        list.map(job => (job.id === formId ? { ...job, visibility: "closed" } : job))
+      );
+    }
   }
+
+    function handleSliderValueChange(event) {
+        const value = event.target.value;
+        const orientation = event.target.id;
+        if(orientation == "verticalMargins") {
+            setResumeMargins(prev => ({...prev, "paddingTop": value+"px", "paddingBottom": value+"px"}));
+        } else if(orientation == "horizontalMargins") {
+            setResumeMargins(prev => ({...prev, "paddingLeft": value+"px", "paddingRight": value+"px"}));
+        }
+    }
 
   return (
     <div id='mainContainer'>
       <Customizations
         resumeMargins = {resumeMargins}
         setResumeMargins = {setResumeMargins}
+        handleSliderValueChange = {handleSliderValueChange}
       />
 
       <Forms
@@ -80,10 +89,8 @@ function App() {
         educationHistory = {educationHistory}
         setEducationHistory = {setEducationHistory}
         handleEducationHistoryChange = {handleEducationHistoryChange}
-        handleOpenEmploymentForm = {handleOpenEmploymentForm}
-        handleCollapseEmploymentForm = {handleCollapseEmploymentForm}
-        handleOpenEducationForm = {handleOpenEducationForm}
-        handleCollapseEducationForm = {handleCollapseEducationForm}
+        handleExpandForm = {handleExpandForm}
+        handleCollapseForm = {handleCollapseForm}
       />
 
       <ResumePreview

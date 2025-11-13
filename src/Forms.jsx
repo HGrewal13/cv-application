@@ -22,16 +22,15 @@ function Forms(props) {
                 employmentHistory = {props.employmentHistory}
                 setEmploymentHistory = {props.setEmploymentHistory}
                 handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
-                handleOpenEmploymentForm = {props.handleOpenEmploymentForm}
-                handleCollapseEmploymentForm = {props.handleCollapseEmploymentForm}
+                handleExpandForm = {props.handleExpandForm}
+                handleCollapseForm = {props.handleCollapseForm}
             />
             <EducationForms
                 educationHistory = {props.educationHistory}
                 setEducationHistory = {props.setEducationHistory}
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
-                handleDateChange = {handleDateChange}
-                handleOpenEducationForm = {props.handleOpenEducationForm}
-                handleCollapseEducationForm = {props.handleCollapseEducationForm}
+                handleExpandForm = {props.handleExpandForm}
+                handleCollapseForm = {props.handleCollapseForm}
             />
         </div>
     )

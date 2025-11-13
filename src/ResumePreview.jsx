@@ -52,13 +52,10 @@ function EducationCard({educationHistory}) {
 
 
 function EmploymentCard({employmentHistory}) {
-    console.log(employmentHistory);
     return (
         <div className="employment">
             <h3 className="sectionHeading">Employment</h3>
-            {/* {console.log("before crash")} */}
             {employmentHistory.map((obj,i) => {
-                // {console.log("after crash")}
                 return (
                     <div key={`${obj.name}-${obj.role}-${i}`}>
                         <h2>{obj.name}</h2>

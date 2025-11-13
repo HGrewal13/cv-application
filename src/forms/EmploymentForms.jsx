@@ -1,5 +1,5 @@
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymentForm, handleCollapseEmploymentForm}) {
+function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, handleCollapseForm}) {
     function handleEmploymentChange(event) {
         const field = event.target.id;
         let value = event.target.value;
@@ -48,7 +48,7 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymen
 
                 <div className="buttons">
                     <button>Delete</button>
-                    <button type="button" onClick={() => handleCollapseEmploymentForm(job.id)}>Collapse</button>
+                    <button type="button" onClick={() => handleCollapseForm("employment", job.id)}>Collapse</button>
                 </div>
                 
             </form>
@@ -58,7 +58,7 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleOpenEmploymen
             <div className="minimizedForm">
                 <h2>{job.name}</h2>
                 <div className="buttons">
-                    <button type="button" onClick={() => handleOpenEmploymentForm(job.id)}>Expand</button>
+                    <button type="button" onClick={() =>handleExpandForm("employment", job.id)}>Expand</button>
                 </div>
                 
             </div>
@@ -84,10 +84,10 @@ function EmploymentForms(props) {
                         key={job.id} 
                         job = {job}
                         handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
-                        handleOpenEmploymentForm = {props.handleOpenEmploymentForm}
-                        handleCollapseEmploymentForm = {props.handleCollapseEmploymentForm}
-                    >
-                    </EmploymentForm>
+                        handleExpandForm = {props.handleExpandForm}
+                        handleCollapseForm = {props.handleCollapseForm}
+                    />
+                    
                 ))}
             </div>
 
