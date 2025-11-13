@@ -62,7 +62,7 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
                 </div>
 
                 <div className="buttons">
-                    <button type="button" onClick={() => handleRemoveForm("employment", job.id)}>Delete</button>
+                    <button type="button" onClick={() => handleRemoveForm("employment", job.id)} className="deleteButton">Delete</button>
                     <button type="button" onClick={() => handleCollapseForm("employment", job.id)}>Collapse</button>
                 </div>
                 

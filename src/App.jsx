@@ -7,8 +7,8 @@ import ResumePreview from './ResumePreview'
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({name: "John Smith", phone: 1234567890, email: "j.smith13@hotmail.com", address: "123 Ave"});
-  const [employmentHistory, setEmploymentHistory] = useState([{name: "Google", role: "Engineer", description: "I did engineering things", startDate: "2025-01-01", endDate: "2025-12-31"}]);
-  const [educationHistory, setEducationHistory] = useState([{institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
+  const [employmentHistory, setEmploymentHistory] = useState([{id: Date.now().toString(), name: "Google", role: "Engineer", description: "I did engineering things", startDate: "2025-01-01", endDate: "2025-12-31"}]);
+  const [educationHistory, setEducationHistory] = useState([{id: Date.now().toString(), institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
 
   const [resumeMargins, setResumeMargins] = useState({});
   const [resumeLineSpacing, setResumeLineSpacing] = useState({});

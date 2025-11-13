@@ -53,7 +53,7 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
                 </div>
 
                 <div className="buttons">
-                    <button type="button" onClick={() => handleRemoveForm("education", school.id)}>Delete</button>
+                    <button type="button" onClick={() => handleRemoveForm("education", school.id)} className="deleteButton">Delete</button>
                     <button type="button" onClick={() => handleCollapseForm("education", school.id)}>Collapse</button>
                 </div>
             </form>
