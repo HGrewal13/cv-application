@@ -87,7 +87,7 @@ function EmploymentCard({employmentHistory}) {
 function ResumePreview(props) {
 
     return (
-        <div className="resumePreview">
+        <div className="resumePreview" style={props.resumeMargins}>
             <PersonalDetailsCard
                 personalDetails={props.personalDetails}
             />

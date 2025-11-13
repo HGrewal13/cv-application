@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
+import Customizations from './Customizations'
 import Forms from './Forms'
 import ResumePreview from './ResumePreview'
 
@@ -8,6 +9,8 @@ function App() {
   const [personalDetails, setPersonalDetails] = useState({name: "John Smith", phone: 1234567890, email: "j.smith13@hotmail.com", address: "123 Ave"});
   const [employmentHistory, setEmploymentHistory] = useState([{name: "Google", role: "Engineer", description: "I did engineering things", startDate: "2025-01-01", endDate: "2025-12-31"}]);
   const [educationHistory, setEducationHistory] = useState([{institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
+
+  const [resumeMargins, setResumeMargins] = useState({padding: "0px"});
 
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     console.log(field, value, idGenerated);
@@ -63,6 +66,11 @@ function App() {
 
   return (
     <div id='mainContainer'>
+      <Customizations
+        resumeMargins = {resumeMargins}
+        setResumeMargins = {setResumeMargins}
+      />
+
       <Forms
         personalDetails = {personalDetails}
         setPersonalDetails = {setPersonalDetails}
@@ -82,6 +90,7 @@ function App() {
         personalDetails = {personalDetails}
         employmentHistory = {employmentHistory}
         educationHistory = {educationHistory}
+        resumeMargins = {resumeMargins}
       />
     </div>
   )
