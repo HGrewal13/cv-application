@@ -171,7 +171,11 @@ button {
   text-align: center;
 }
 
-
+.contactDetailContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
 /* Employment */
 .employmentGrouping {

@@ -1,3 +1,5 @@
+import Icon from "@mdi/react";
+import { mdiEmailOutline, mdiPhone, mdiHome} from "@mdi/js";
 
 function handleDateChange(date) {
     if(date == "on") {
@@ -18,9 +20,18 @@ function PersonalDetailsCard({personalDetails, convertToPhoneNumber}) {
         <div className="personalDetails">
             <h2>{personalDetails.name}</h2>
             <div id="contactDetails">
-                <p>{personalDetails.email}</p>
-                <p>{convertToPhoneNumber(personalDetails.phone)}</p>
-                <p>{personalDetails.address}</p>
+                <div className="contactDetailContainer">
+                    <Icon path={mdiEmailOutline} size={1}/>
+                    <p>{personalDetails.email}</p>
+                </div>
+                <div className="contactDetailContainer">
+                    <Icon path={mdiPhone} size={1}/>
+                    <p>{convertToPhoneNumber(personalDetails.phone)}</p>
+                </div>
+                <div className="contactDetailContainer">
+                    <Icon path={mdiHome} size={1}/>
+                    <p>{personalDetails.address}</p>
+                </div>
             </div>
         </div>
     )
