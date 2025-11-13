@@ -18,7 +18,7 @@ function PersonalDetailsCard({personalDetails, convertToPhoneNumber}) {
 
     return (
         <div className="personalDetails">
-            <h2>{personalDetails.name}</h2>
+            <h1>{personalDetails.name}</h1>
             <div id="contactDetails">
                 <div className="contactDetailContainer">
                     <Icon path={mdiEmailOutline} size={1}/>

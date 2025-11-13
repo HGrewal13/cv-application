@@ -100,11 +100,6 @@ button:hover {
   gap: 10px;
 }
 
-.dateInputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .minimizedForm {
   display: flex;
   justify-content: space-between;
@@ -126,7 +121,19 @@ button:hover {
 
 .inputField {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+  /* grid-template-rows: 1fr 1fr; */
+}
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="date"] {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .presentInputField {

@@ -13,7 +13,7 @@ function PersonalDetailsForm({personalDetails, setPersonalDetails, convertToPhon
 
             <div className="inputField">
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" value={personalDetails.email}
+                <input type="email" name="email" id="email" value={personalDetails.email}
                     onChange={(e) => {setPersonalDetails(prev => ({...prev, "email": e.target.value}))}}
                 />
             </div>

@@ -1,4 +1,6 @@
-function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm}) {
+import Icon from "@mdi/react";
+
+function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm, expandIcon, collapseIcon}) {
     function handleEducationChange(event) {
         const field = event.target.id;
         let value = event.target.value;
@@ -54,16 +56,16 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
 
                 <div className="buttons">
                     <button type="button" onClick={() => handleRemoveForm("education", school.id)} className="deleteButton">Delete</button>
-                    <button type="button" onClick={() => handleCollapseForm("education", school.id)}>Collapse</button>
+                    <button type="button" onClick={() => handleCollapseForm("education", school.id)}><Icon path={collapseIcon} size={0.75} /></button>
                 </div>
             </form>
         )
     } else {
         return (
             <div className="minimizedForm">
-                <h2>{school.institute}</h2>
+                <h3>{school.institute}</h3>
                 <div className="buttons">
-                    <button type="button" onClick={() => handleExpandForm("education", school.id)}>Expand</button>
+                    <button type="button" onClick={() => handleExpandForm("education", school.id)}><Icon path={expandIcon} size={0.75} /></button>
                 </div>
                 
             </div>
@@ -91,6 +93,8 @@ function EducationForms(props) {
                         handleExpandForm = {props.handleExpandForm}
                         handleCollapseForm = {props.handleCollapseForm}
                         handleRemoveForm = {props.handleRemoveForm}
+                        expandIcon = {props.expandIcon}
+                        collapseIcon = {props.collapseIcon}
                     >
                     </EducationForm>
                 ))}

@@ -1,6 +1,8 @@
 import PersonalDetailsForm from "./forms/PersonalDetailsForm";
 import EmploymentForms from "./forms/EmploymentForms";
 import EducationForms from "./forms/EducationForms";
+import Icon from "@mdi/react";
+import { mdiArrowExpand, mdiArrowCollapse} from "@mdi/js";
 
 function Forms(props) {
     return (
@@ -17,6 +19,8 @@ function Forms(props) {
                 handleExpandForm = {props.handleExpandForm}
                 handleCollapseForm = {props.handleCollapseForm}
                 handleRemoveForm = {props.handleRemoveForm}
+                expandIcon = {mdiArrowExpand}
+                collapseIcon = {mdiArrowCollapse}
             />
             <EducationForms
                 educationHistory = {props.educationHistory}
@@ -25,6 +29,8 @@ function Forms(props) {
                 handleExpandForm = {props.handleExpandForm}
                 handleCollapseForm = {props.handleCollapseForm}
                 handleRemoveForm = {props.handleRemoveForm}
+                expandIcon = {mdiArrowExpand}
+                collapseIcon = {mdiArrowCollapse}
             />
         </div>
     )
