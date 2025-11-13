@@ -5,6 +5,13 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
         handleEducationHistoryChange(field, value, school.id);
     }
 
+    function handleCheckBox(event) {
+        const checked = event.target.checked;
+        if(checked) {
+            handleEducationChange(event);
+        }
+    }
+
     if(school.visibility == "open") {
         return (
             <form className="educationForm">
@@ -36,6 +43,13 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
                             onChange={handleEducationChange}
                         />
                     </div>
+                </div>
+
+                <div className="presentInputField">
+                    <input type="checkbox" name="endDate" id="endDate"
+                        onChange={handleCheckBox}
+                    />
+                    <label htmlFor="present">I currently study here</label>
                 </div>
 
                 <div className="buttons">

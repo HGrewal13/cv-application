@@ -1,5 +1,8 @@
 
 function handleDateChange(date) {
+    if(date == "on") {
+        return "Present";
+    }
     const formatted = new Date(date).toLocaleDateString("en-US", {
         month: "short",
         day: "2-digit",

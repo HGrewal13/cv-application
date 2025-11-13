@@ -6,6 +6,13 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
         handleEmploymentHistoryChange(field, value, job.id);
     }
 
+    function handleCheckBox(event) {
+        const checked = event.target.checked;
+        if(checked) {
+            handleEmploymentChange(event);
+        }
+    }
+
     if(job.visibility == "open") {
         return (
             <form className="employmentForm">
@@ -44,6 +51,14 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
                             onChange={handleEmploymentChange}
                         />
                     </div>
+                    
+                </div>
+
+                <div className="presentInputField">
+                    <input type="checkbox" name="endDate" id="endDate"
+                        onChange={handleCheckBox}
+                    />
+                    <label htmlFor="present">I currently work here</label>
                 </div>
 
                 <div className="buttons">

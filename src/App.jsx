@@ -19,7 +19,7 @@ function App() {
         // requires return statement to make sure employmentHistory is not blank when rendering in resumePreview
         return job.id == idGenerated
           ? {...job, [field]:value}
-          : job //keep the original object
+          : job
       })
     })
   }

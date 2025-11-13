@@ -126,6 +126,12 @@ button {
   grid-template-rows: 1fr 1fr;
 }
 
+.presentInputField {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 
 /* CVPreview Styling */
 
