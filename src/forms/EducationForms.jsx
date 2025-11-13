@@ -1,4 +1,4 @@
-function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm}) {
+function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm}) {
     function handleEducationChange(event) {
         const field = event.target.id;
         let value = event.target.value;
@@ -39,7 +39,7 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
                 </div>
 
                 <div className="buttons">
-                    <button>Delete</button>
+                    <button type="button" onClick={() => handleRemoveForm("education", school.id)}>Delete</button>
                     <button type="button" onClick={() => handleCollapseForm("education", school.id)}>Collapse</button>
                 </div>
             </form>
@@ -76,6 +76,7 @@ function EducationForms(props) {
                         handleEducationHistoryChange={props.handleEducationHistoryChange}
                         handleExpandForm = {props.handleExpandForm}
                         handleCollapseForm = {props.handleCollapseForm}
+                        handleRemoveForm = {props.handleRemoveForm}
                     >
                     </EducationForm>
                 ))}

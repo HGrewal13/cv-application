@@ -1,5 +1,5 @@
 // This component is used to update the actual employmentHistory on each form submission. Will be rendered in preview
-function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, handleCollapseForm}) {
+function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm}) {
     function handleEmploymentChange(event) {
         const field = event.target.id;
         let value = event.target.value;
@@ -47,7 +47,7 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
                 </div>
 
                 <div className="buttons">
-                    <button>Delete</button>
+                    <button type="button" onClick={() => handleRemoveForm("employment", job.id)}>Delete</button>
                     <button type="button" onClick={() => handleCollapseForm("employment", job.id)}>Collapse</button>
                 </div>
                 
@@ -86,6 +86,7 @@ function EmploymentForms(props) {
                         handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
                         handleExpandForm = {props.handleExpandForm}
                         handleCollapseForm = {props.handleCollapseForm}
+                        handleRemoveForm = {props.handleRemoveForm}
                     />
                     
                 ))}

@@ -1,10 +1,4 @@
-import { useState } from "react";
-
 function PersonalDetailsForm({personalDetails, setPersonalDetails}) {
-    
-    // Dont need to use state in this component because there will only be 1 personalDetail form
-
-    // const [details, setDetails] = useState({name: "", phone: "", email: "", address: ""});
 
     const convertToPhoneNumber = function(number) {
         

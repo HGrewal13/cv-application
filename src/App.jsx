@@ -62,15 +62,23 @@ function App() {
     }
   }
 
-    function handleSliderValueChange(event) {
-        const value = event.target.value;
-        const orientation = event.target.id;
-        if(orientation == "verticalMargins") {
-            setResumeMargins(prev => ({...prev, "paddingTop": value+"px", "paddingBottom": value+"px"}));
-        } else if(orientation == "horizontalMargins") {
-            setResumeMargins(prev => ({...prev, "paddingLeft": value+"px", "paddingRight": value+"px"}));
-        }
+  function handleRemoveForm (formType, formId) {
+    if(formType == "employment") {
+      setEmploymentHistory(employmentHistory => employmentHistory.filter(form => form.id !== formId));
+    } else if(formType == "education") {
+      setEducationHistory(educationHistory => educationHistory.filter(form => form.id !== formId));
     }
+  }
+
+  function handleSliderValueChange(event) {
+      const value = event.target.value;
+      const orientation = event.target.id;
+      if(orientation == "verticalMargins") {
+          setResumeMargins(prev => ({...prev, "paddingTop": value+"px", "paddingBottom": value+"px"}));
+      } else if(orientation == "horizontalMargins") {
+          setResumeMargins(prev => ({...prev, "paddingLeft": value+"px", "paddingRight": value+"px"}));
+      }
+  }
 
   return (
     <div id='mainContainer'>
@@ -91,6 +99,7 @@ function App() {
         handleEducationHistoryChange = {handleEducationHistoryChange}
         handleExpandForm = {handleExpandForm}
         handleCollapseForm = {handleCollapseForm}
+        handleRemoveForm = {handleRemoveForm}
       />
 
       <ResumePreview

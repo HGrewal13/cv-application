@@ -5,8 +5,11 @@
   --sectionHeadingColor: blanchedAlmond;
 }
 
-#root {
+body {
   background-color: var(--level3ThemeColor);
+}
+
+#root {
   min-height: 100vh;
 }
 

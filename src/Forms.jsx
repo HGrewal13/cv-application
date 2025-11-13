@@ -3,15 +3,6 @@ import EmploymentForms from "./forms/EmploymentForms";
 import EducationForms from "./forms/EducationForms";
 
 function Forms(props) {
-    function handleDateChange(date) {
-        const formatted = new Date(date).toLocaleDateString("en-US", {
-            month: "short",
-            day: "2-digit",
-            year: "numeric"
-        });
-        return formatted;
-    }
-
     return (
         <div id="mainForm">
             <PersonalDetailsForm 
@@ -24,6 +15,7 @@ function Forms(props) {
                 handleEmploymentHistoryChange = {props.handleEmploymentHistoryChange}
                 handleExpandForm = {props.handleExpandForm}
                 handleCollapseForm = {props.handleCollapseForm}
+                handleRemoveForm = {props.handleRemoveForm}
             />
             <EducationForms
                 educationHistory = {props.educationHistory}
@@ -31,6 +23,7 @@ function Forms(props) {
                 handleEducationHistoryChange = {props.handleEducationHistoryChange}
                 handleExpandForm = {props.handleExpandForm}
                 handleCollapseForm = {props.handleCollapseForm}
+                handleRemoveForm = {props.handleRemoveForm}
             />
         </div>
     )
