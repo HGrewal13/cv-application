@@ -10,7 +10,7 @@ function App() {
   const [employmentHistory, setEmploymentHistory] = useState([{name: "Google", role: "Engineer", description: "I did engineering things", startDate: "2025-01-01", endDate: "2025-12-31"}]);
   const [educationHistory, setEducationHistory] = useState([{institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
 
-  const [resumeMargins, setResumeMargins] = useState({padding: "0px"});
+  const [resumeMargins, setResumeMargins] = useState({});
 
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     console.log(field, value, idGenerated);
