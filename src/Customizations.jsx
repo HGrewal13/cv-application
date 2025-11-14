@@ -1,5 +1,5 @@
 
-function Margins({margins, setResumeMargins, handleSliderValueChange}) {
+function Margins({handleSliderValueChange}) {
     return (
         <div id="marginsCustomization">
             <label htmlFor="margins">Vertical Margins</label>
@@ -30,8 +30,6 @@ function Customizations(props) {
     return (
         <div id="customizationsMenu">
             <Margins
-                margins = {props.resumeMargins}
-                setResumeMargins = {props.setResumeMargins}
                 handleSliderValueChange = {props.handleSliderValueChange}
             />
             <LineSpacing

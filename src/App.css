@@ -84,6 +84,10 @@ button:hover {
   border-radius: 5px;
 }
 
+.required {
+  color: red;
+}
+
 /* Employment Section */
 
 .employmentHistoryForms {

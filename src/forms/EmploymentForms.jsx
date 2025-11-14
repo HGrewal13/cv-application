@@ -19,35 +19,39 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
         return (
             <form className="employmentForm">
                 <div className="inputField">
-                    <label htmlFor="companyName">Company Name</label>
+                    <label htmlFor="companyName">Company Name<span className="required" aria-hidden="true">*</span></label>
                     <input type="text" name="companyName" id="name" value={job.name} required
                         onChange={handleEmploymentChange}
                         onBlur={requiredOnBlur}
+                        aria-required="true"
                     />
                 </div>
 
                 <div className="inputField">
-                    <label htmlFor="companyRole">Role</label>
+                    <label htmlFor="companyRole">Role<span className="required" aria-hidden="true">*</span></label>
                     <input type="text" name="companyRole" id="role" value={job.role} required
                         onChange={handleEmploymentChange}
                         onBlur={requiredOnBlur}
+                        aria-required="true"
                     />
                 </div>
 
                 <div className="inputField">
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description">Description<span className="required" aria-hidden="true">*</span></label>
                     <input type="text" name="description" id="description" value={job.description} maxLength={200} required
                         onChange={handleEmploymentChange}
                         onBlur={requiredOnBlur}
+                        aria-required="true"
                     />
                 </div>
 
                 <div className="dateInputs">
                     <div className="inputField">
-                        <label htmlFor="companyStartDate">Start Date</label>
+                        <label htmlFor="companyStartDate">Start Date<span className="required" aria-hidden="true">*</span></label>
                         <input type="date" name="companyStartDate" id="startDate" value={job.startDate} required
                             onChange={handleEmploymentChange}
                             onBlur={requiredOnBlur}
+                            aria-required="true"
                         />
                     </div>
                     

@@ -18,27 +18,30 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
         return (
             <form className="educationForm">
                 <div className="inputField">
-                    <label htmlFor="institute">Institute Name</label>
+                    <label htmlFor="institute">Institute Name<span className="required" aria-hidden="true">*</span></label>
                     <input type="text" name="institute" id="institute" value={school.institute} required
                         onChange={handleEducationChange}
                         onBlur={requiredOnBlur}
+                        aria-required="true"
                     />
                 </div>
 
                 <div className="inputField">
-                    <label htmlFor="degree">Degree</label>
+                    <label htmlFor="degree">Degree<span className="required" aria-hidden="true">*</span></label>
                     <input type="text" name="degree" id="degree" value={school.degree} required
                         onChange={handleEducationChange}
                         onBlur={requiredOnBlur}
+                        aria-required="true"
                     />
                 </div>
 
                 <div className="dateInputs">
                     <div className="inputField">
-                        <label htmlFor="startDate">Start Date</label>
+                        <label htmlFor="startDate">Start Date<span className="required" aria-hidden="true">*</span></label>
                         <input type="date" name="educationStartDate" id="startDate" value={school.startDate} required
                             onChange={handleEducationChange} 
                             onBlur={requiredOnBlur}
+                            aria-required="true"
                         />
                     </div>
 
