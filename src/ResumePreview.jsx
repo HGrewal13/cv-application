@@ -97,8 +97,9 @@ function EmploymentCard({employmentHistory}) {
 
 function ResumePreview(props) {
 
+    const previewStyle = {...props.resumeMargins, ...props.font}
     return (
-        <div className="resumePreview" style={props.resumeMargins}>
+        <div className="resumePreview" style={previewStyle}>
             <PersonalDetailsCard
                 personalDetails={props.personalDetails}
                 convertToPhoneNumber = {props.convertToPhoneNumber}

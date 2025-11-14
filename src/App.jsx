@@ -11,19 +11,23 @@ function App() {
   const [educationHistory, setEducationHistory] = useState([{id: Date.now().toString(), institute: "University of Earth", degree: "Bachelor of Engineering", startDate: "2025-01-01", endDate: "2025-12-31"}]);
 
   const [resumeMargins, setResumeMargins] = useState({});
+  const [showMargins, setShowMargins] = useState(false);
+
   const [resumeLineSpacing, setResumeLineSpacing] = useState({});
 
-    const convertToPhoneNumber = function(number) {
-        const digits = String(number).replace(/\D/g, "");
+  const [font, setFont] = useState({fontFamily: "serif"});
 
-        if(digits.length <= 3) {
-            return digits;
-        } else if(digits.length <= 6) {
-            return `(${digits.slice(0,3)})-${digits.slice(3)}`;
-        } else {
-            return `(${digits.slice(0, 3)})-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
-        }
-    }
+  const convertToPhoneNumber = function(number) {
+      const digits = String(number).replace(/\D/g, "");
+
+      if(digits.length <= 3) {
+          return digits;
+      } else if(digits.length <= 6) {
+          return `(${digits.slice(0,3)})-${digits.slice(3)}`;
+      } else {
+          return `(${digits.slice(0, 3)})-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      }
+  }
 
   function handleEmploymentHistoryChange(field, value, idGenerated) {
     setEmploymentHistory(existingHistory => {
@@ -92,12 +96,28 @@ function App() {
       }
   }
 
+  function toggleMargins() {
+    setShowMargins(!showMargins);
+  }
+
+  function handleFontChange(event) {
+    if(event.target.id == "sans-serif") {
+      setFont({fontFamily: "sans-serif"});
+    } else if(event.target.id == "serif") {
+      setFont({fontFamily: "serif"});
+    }
+  }
+
   return (
     <div id='mainContainer'>
       <Customizations
         resumeMargins = {resumeMargins}
         setResumeMargins = {setResumeMargins}
         handleSliderValueChange = {handleSliderValueChange}
+        showMargins = {showMargins}
+        toggleMargins = {toggleMargins}
+        font = {font}
+        handleFontChange = {handleFontChange}
       />
 
       <Forms
@@ -121,6 +141,7 @@ function App() {
         employmentHistory = {employmentHistory}
         educationHistory = {educationHistory}
         resumeMargins = {resumeMargins}
+        font = {font}
       />
     </div>
   )
