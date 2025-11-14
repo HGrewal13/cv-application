@@ -1,4 +1,4 @@
-function PersonalDetailsForm({personalDetails, setPersonalDetails, convertToPhoneNumber}) {
+function PersonalDetailsForm({personalDetails, setPersonalDetails, convertToPhoneNumber, requiredOnBlur}) {
 
     function handlePhoneBlur(event) {
         const digitsOnly = event.target.value.replace(/\D/g, "");
@@ -30,10 +30,6 @@ function PersonalDetailsForm({personalDetails, setPersonalDetails, convertToPhon
         } else {
             event.target.setCustomValidity("");
         }
-        event.target.reportValidity();
-    }
-
-    function requiredOnBlur(event) {
         event.target.reportValidity();
     }
 

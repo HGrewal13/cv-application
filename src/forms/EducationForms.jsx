@@ -1,6 +1,6 @@
 import Icon from "@mdi/react";
 
-function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm, expandIcon, collapseIcon}) {
+function EducationForm({school, handleEducationHistoryChange, handleExpandForm, handleCollapseForm, handleRemoveForm, requiredOnBlur, expandIcon, collapseIcon}) {
     function handleEducationChange(event) {
         const field = event.target.id;
         let value = event.target.value;
@@ -19,29 +19,32 @@ function EducationForm({school, handleEducationHistoryChange, handleExpandForm, 
             <form className="educationForm">
                 <div className="inputField">
                     <label htmlFor="institute">Institute Name</label>
-                    <input type="text" name="institute" id="institute" value={school.institute}
+                    <input type="text" name="institute" id="institute" value={school.institute} required
                         onChange={handleEducationChange}
+                        onBlur={requiredOnBlur}
                     />
                 </div>
 
                 <div className="inputField">
                     <label htmlFor="degree">Degree</label>
-                    <input type="text" name="degree" id="degree" value={school.degree}
+                    <input type="text" name="degree" id="degree" value={school.degree} required
                         onChange={handleEducationChange}
+                        onBlur={requiredOnBlur}
                     />
                 </div>
 
                 <div className="dateInputs">
                     <div className="inputField">
                         <label htmlFor="startDate">Start Date</label>
-                        <input type="date" name="educationStartDate" id="startDate" value={school.startDate}
-                            onChange={handleEducationChange}
+                        <input type="date" name="educationStartDate" id="startDate" value={school.startDate} required
+                            onChange={handleEducationChange} 
+                            onBlur={requiredOnBlur}
                         />
                     </div>
 
                     <div className="inputField">
                         <label htmlFor="endDate">End Date</label>
-                        <input type="date" name="educationEndDate" id="endDate" value={school.endDate}
+                        <input type="date" name="educationEndDate" id="endDate" value={school.endDate} 
                             onChange={handleEducationChange}
                         />
                     </div>
@@ -93,6 +96,7 @@ function EducationForms(props) {
                         handleExpandForm = {props.handleExpandForm}
                         handleCollapseForm = {props.handleCollapseForm}
                         handleRemoveForm = {props.handleRemoveForm}
+                        requiredOnBlur = {props.requiredOnBlur}
                         expandIcon = {props.expandIcon}
                         collapseIcon = {props.collapseIcon}
                     >
