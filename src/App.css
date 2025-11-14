@@ -37,14 +37,6 @@ body {
   gap: 10px;
 }
 
-/* .form {
-  background-color: var(--formBackground);
-  width: 80%;
-  margin: 0 auto;
-  border-radius: 20px;
-  padding: 20px;
-} */
-
 #personalDetailsForm, .employmentForm, .educationForm {
   display: flex;
   flex-direction: column;
@@ -99,6 +91,11 @@ button:hover {
   flex-direction: column;
   gap: 10px;
 }
+
+/* .employmentForm, .educationForm, .minimizedForm {
+  border: 1px solid black;
+  border-radius: 10px;
+} */
 
 .minimizedForm {
   display: flex;
