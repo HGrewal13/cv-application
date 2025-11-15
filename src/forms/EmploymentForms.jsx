@@ -38,7 +38,12 @@ function EmploymentForm({job, handleEmploymentHistoryChange, handleExpandForm, h
 
                 <div className="inputField">
                     <label htmlFor="description">Description<span className="required" aria-hidden="true">*</span></label>
-                    <input type="text" name="description" id="description" value={job.description} maxLength={200} required
+                    <textarea
+                        name="description"
+                        id="description"
+                        value={job.description}
+                        maxLength={200}
+                        required
                         onChange={handleEmploymentChange}
                         onBlur={requiredOnBlur}
                         aria-required="true"
@@ -121,7 +126,7 @@ function EmploymentForms(props) {
             </div>
 
             <div className="buttons">
-                <button onClick={(e) => handleAddNewEmploymentForm()} className="addNewButton">Add New</button>
+                <button onClick={(e) => handleAddNewEmploymentForm()} className="addNewButton"><Icon path={props.addIcon} size={0.75} /></button>
                 
             </div>
         </section>

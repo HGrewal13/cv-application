@@ -2,7 +2,7 @@ import PersonalDetailsForm from "./forms/PersonalDetailsForm";
 import EmploymentForms from "./forms/EmploymentForms";
 import EducationForms from "./forms/EducationForms";
 import Icon from "@mdi/react";
-import { mdiArrowExpand, mdiArrowCollapse} from "@mdi/js";
+import { mdiArrowExpand, mdiArrowCollapse, mdiPlus} from "@mdi/js";
 
 function Forms(props) {
 
@@ -28,6 +28,7 @@ function Forms(props) {
                 requiredOnBlur = {requiredOnBlur}
                 expandIcon = {mdiArrowExpand}
                 collapseIcon = {mdiArrowCollapse}
+                addIcon = {mdiPlus}
             />
             <EducationForms
                 educationHistory = {props.educationHistory}
@@ -39,6 +40,7 @@ function Forms(props) {
                 requiredOnBlur = {requiredOnBlur}
                 expandIcon = {mdiArrowExpand}
                 collapseIcon = {mdiArrowCollapse}
+                addIcon = {mdiPlus}
             />
         </div>
     )

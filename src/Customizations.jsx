@@ -10,7 +10,7 @@ function Margins({handleSliderValueChange, showMargins, toggleMargins}) {
                 />
 
                 <label htmlFor="margins">Horizontal Margins</label>
-                <input type="range" name="margins" id="horizontalMargins" min="0" max="20"
+                <input type="range" name="margins" id="horizontalMargins" min="0" max="30"
                     onChange={handleSliderValueChange}
                 />
 
@@ -36,28 +36,22 @@ function Margins({handleSliderValueChange, showMargins, toggleMargins}) {
 
 }
 
-function LineSpacing() {
-    
-    return (
-        <div id="lineSpacing">
-            <label htmlFor="lineSpacing">Line Spacing</label>
-            <input type="range" name="lineSpacing" id="lineSpacing" min="0" max="10" />
-        </div>
-    )
-}
-
 function Fonts({font, handleFontChange}) {
 
     return (
         <div id="fontButtons">
             <button type="button" className="fontButton" id="serif"
                 onClick={handleFontChange}
+                style={{fontFamily: "serif"}}
             >
+                <span className="fontExample">A</span>
                 Serif
             </button>
             <button type="button" className="fontButton" id="sans-serif"
                 onClick={handleFontChange}
+                style={{fontFamily: "sans-serif"}}
             >
+                <span className="fontExample">A</span>
                 Sans-Serif
             </button>
         </div>
@@ -72,9 +66,6 @@ function Customizations(props) {
                 handleSliderValueChange = {props.handleSliderValueChange}
                 showMargins = {props.showMargins}
                 toggleMargins = {props.toggleMargins}
-            />
-            <LineSpacing
-
             />
             <Fonts
                 font = {props.font}

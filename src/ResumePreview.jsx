@@ -43,7 +43,7 @@ function EducationCard({educationHistory}) {
             <h3 className="sectionHeading">Education</h3>
             {educationHistory.map((obj,i) => {
                 return (
-                    <div key={`${obj.institute}-${obj.degree}-${i}`}>
+                    <div key={`${obj.institute}-${obj.degree}-${i}`} className="educationFormDetails">
                         <h2>{obj.institute}</h2>
                         <div className="educationGrouping">
                             <h3>{obj.degree}</h3>
@@ -71,7 +71,7 @@ function EmploymentCard({employmentHistory}) {
             <h3 className="sectionHeading">Employment</h3>
             {employmentHistory.map((obj,i) => {
                 return (
-                    <div key={`${obj.name}-${obj.role}-${i}`}>
+                    <div key={`${obj.name}-${obj.role}-${i}`} className="employmentFormDetails">
                         <h2>{obj.name}</h2>
                         <div className="employmentGrouping">
                             <h3>{obj.role}</h3>
@@ -99,19 +99,21 @@ function ResumePreview(props) {
 
     const previewStyle = {...props.resumeMargins, ...props.font}
     return (
-        <div className="resumePreview" style={previewStyle}>
-            <PersonalDetailsCard
-                personalDetails={props.personalDetails}
-                convertToPhoneNumber = {props.convertToPhoneNumber}
-            />
+        <div className="resumePreview">
+            <div className="resumeInner" style={previewStyle}>
+                <PersonalDetailsCard
+                    personalDetails={props.personalDetails}
+                    convertToPhoneNumber = {props.convertToPhoneNumber}
+                />
 
-            <EmploymentCard
-                employmentHistory = {props.employmentHistory}
-            />
+                <EmploymentCard
+                    employmentHistory = {props.employmentHistory}
+                />
 
-            <EducationCard 
-                educationHistory={props.educationHistory}
-            />
+                <EducationCard 
+                    educationHistory={props.educationHistory}
+                />
+            </div>
         </div>
     )
 }

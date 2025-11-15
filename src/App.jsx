@@ -13,8 +13,6 @@ function App() {
   const [resumeMargins, setResumeMargins] = useState({});
   const [showMargins, setShowMargins] = useState(false);
 
-  const [resumeLineSpacing, setResumeLineSpacing] = useState({});
-
   const [font, setFont] = useState({fontFamily: "serif"});
 
   const convertToPhoneNumber = function(number) {
@@ -101,9 +99,9 @@ function App() {
   }
 
   function handleFontChange(event) {
-    if(event.target.id == "sans-serif") {
+    if(event.currentTarget.id == "sans-serif") {
       setFont({fontFamily: "sans-serif"});
-    } else if(event.target.id == "serif") {
+    } else if(event.currentTarget.id == "serif") {
       setFont({fontFamily: "serif"});
     }
   }

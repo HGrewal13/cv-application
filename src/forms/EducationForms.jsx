@@ -107,7 +107,7 @@ function EducationForms(props) {
                 ))}
             </div>
             <div className="buttons">
-                <button onClick={(e) => handleAddNewEducationForm()} className="addNewButton">Add New</button>
+                <button onClick={(e) => handleAddNewEducationForm()} className="addNewButton"><Icon path={props.addIcon} size={0.75} /></button>
             </div>
             
         </section>
